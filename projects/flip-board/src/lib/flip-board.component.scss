@@ -56,10 +56,10 @@ $entityHeight: 60px;
 
 		.back {
 			position: absolute;
+			bottom: $gapSize;
 			width: 100%;
 			height: 100%;
 			background-color: $backgroundColor;
-			margin-top: $gapSize;
 			transform: rotateX(0deg) rotateY(-180deg) scale(-1);
 			line-height: 0px;
 			backface-visibility: hidden;

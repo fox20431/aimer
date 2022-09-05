@@ -31,9 +31,9 @@ export class FlipBoardComponent implements OnInit, AfterViewInit {
 	}
 
 	ngAfterViewInit(): void {
-		
+		let tempValue = this.value
 		const transform180 = (seconds: any) => {
-			let timer: any;
+			let timer: NodeJS.Timeout;
 			this.flodBoxElement.nativeElement.style.transition = "transform 0s"; //使其瞬间返回到 0deg
 			this.flodBoxElement.nativeElement.style.transform = "perspective(200px) rotateX(0deg)";
 			// frontNode 与 bottomNode 的显示
@@ -48,7 +48,12 @@ export class FlipBoardComponent implements OnInit, AfterViewInit {
 		}
 		setInterval(() => {
 			let seconds = new Date().getSeconds();
-			transform180(seconds);
+			// if have the value not change, the animation don't start.
+			if (tempValue == this.value) { 
+				tempValue = this.value
+			} else {
+				transform180(seconds);
+			}
 		}, 1000);
 	}
 

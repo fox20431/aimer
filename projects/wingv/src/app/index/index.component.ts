@@ -10,10 +10,12 @@ export class IndexComponent implements OnInit, AfterViewInit {
 	title = "纪念日"
 
 	seconds: number = new Date().getSeconds()
+	minutes: number = new Date().getMinutes()
 
   constructor() { 
 		setInterval(() => {
 			this.seconds = new Date().getSeconds()
+			this.minutes = new Date().getMinutes()
 		}, 200)
 	}
 	
