@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { TimerComponent } from './timer.component';
+import { FlipBoardComponent } from './flip-board.component';
 
 describe('TimerComponent', () => {
-  let component: TimerComponent;
-  let fixture: ComponentFixture<TimerComponent>;
+  let component: FlipBoardComponent;
+  let fixture: ComponentFixture<FlipBoardComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ TimerComponent ]
+      declarations: [ FlipBoardComponent ]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(TimerComponent);
+    fixture = TestBed.createComponent(FlipBoardComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

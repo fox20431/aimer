@@ -1,22 +1,27 @@
 $backgroundColor: #000000;
 $fontColor: #ffffff;
-$gapColor: rgba(255, 255, 255, 1);
+$gapSize: 2px;
 
-$containerWidth: 90px;
-$containerHeight: 60px;
+$entityWidth: 90px;
+$entityHeight: 60px;
 
 .container {
+	width: $entityWidth;
+	height: $entityHeight*2 + $gapSize;
+	padding: 0px;
+}
+
+.entity {
 	position: relative;
-	width: $containerWidth;
-	height: $containerHeight;
-	line-height: 2*$containerHeight;
+	width: $entityWidth;
+	height: $entityHeight;
+	line-height: 2*$entityHeight;
 	box-sizing: border-box;
-	font-size: $containerHeight*1.25;
+	font-size: $entityHeight*1.25;
 	color: $fontColor;
 	text-align: center;
 
 	.top {
-		border-bottom: 1px solid $gapColor;
 		width: 100%;
 		height: 100%;
 		background-color: $backgroundColor;
@@ -24,8 +29,8 @@ $containerHeight: 60px;
 	}
 
 	.bottom {
+		margin-top: $gapSize;
 		line-height: 0;
-		border-top: 1px solid $gapColor;
 		width: 100%;
 		height: 100%;
 		background-color: $backgroundColor;
@@ -37,7 +42,6 @@ $containerHeight: 60px;
 		top: 0;
 		width: 100%;
 		height: 100%;
-		border-bottom: 1px solid $gapColor;
 		transform-style: preserve-3d;
 		transform-origin: bottom;
 
@@ -46,7 +50,6 @@ $containerHeight: 60px;
 			width: 100%;
 			height: 100%;
 			background-color: $backgroundColor;
-			border-bottom: 1px solid $gapColor;
 			backface-visibility: hidden;
 			overflow: hidden;
 		}
@@ -56,7 +59,7 @@ $containerHeight: 60px;
 			width: 100%;
 			height: 100%;
 			background-color: $backgroundColor;
-			border-top: 1px solid $gapColor;
+			margin-top: $gapSize;
 			transform: rotateX(0deg) rotateY(-180deg) scale(-1);
 			line-height: 0px;
 			backface-visibility: hidden;

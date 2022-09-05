@@ -1,12 +1,12 @@
 import { AfterViewInit, Component, Directive, ElementRef, Input, OnInit, ViewChild, ViewEncapsulation } from '@angular/core';
 
 @Component({
-	selector: 'lib-timer',
-	templateUrl: './timer.component.html',
-	styleUrls: ['./timer.component.scss'],
+	selector: 'flip-board',
+	templateUrl: './flip-board.component.html',
+	styleUrls: ['./flip-board.component.scss'],
 	encapsulation: ViewEncapsulation.ShadowDom
 })
-export class TimerComponent implements OnInit, AfterViewInit {
+export class FlipBoardComponent implements OnInit, AfterViewInit {
 
 	@ViewChild('top')
 	topElement!: ElementRef<HTMLParagraphElement>;

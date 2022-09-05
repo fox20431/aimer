@@ -23,8 +23,8 @@
       "dom"
     ],
     "paths": {
-      "timer": [
-        "dist/timer"
+      "flip-board": [
+        "dist/flip-board"
       ]
     }
   },

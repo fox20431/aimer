@@ -5,7 +5,8 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { IndexComponent } from './index/index.component';
 import { SecretComponent } from './secret/secret.component';
-import { TimerModule } from 'timer';
+
+import { FlipBoardModule } from 'flip-board';
 
 @NgModule({
   declarations: [
@@ -16,7 +17,7 @@ import { TimerModule } from 'timer';
   imports: [
     BrowserModule,
     AppRoutingModule,
-		TimerModule
+		FlipBoardModule
   ],
   providers: [],
   bootstrap: [AppComponent]
