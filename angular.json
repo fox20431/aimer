@@ -3,5 +3,136 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
+    "timer": {
+      "projectType": "library",
+      "root": "projects/timer",
+      "sourceRoot": "projects/timer/src",
+      "prefix": "lib",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:ng-packagr",
+          "options": {
+            "project": "projects/timer/ng-package.json"
+          },
+          "configurations": {
+            "production": {
+              "tsConfig": "projects/timer/tsconfig.lib.prod.json"
+            },
+            "development": {
+              "tsConfig": "projects/timer/tsconfig.lib.json"
+            }
+          },
+          "defaultConfiguration": "production"
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/timer/src/test.ts",
+            "tsConfig": "projects/timer/tsconfig.spec.json",
+            "karmaConfig": "projects/timer/karma.conf.js"
+          }
+        }
+      }
+    },
+    "wingv": {
+      "projectType": "application",
+      "schematics": {
+        "@schematics/angular:component": {
+          "style": "scss"
+        }
+      },
+      "root": "projects/wingv",
+      "sourceRoot": "projects/wingv/src",
+      "prefix": "app",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:browser",
+          "options": {
+            "outputPath": "dist/wingv",
+            "index": "projects/wingv/src/index.html",
+            "main": "projects/wingv/src/main.ts",
+            "polyfills": "projects/wingv/src/polyfills.ts",
+            "tsConfig": "projects/wingv/tsconfig.app.json",
+            "inlineStyleLanguage": "scss",
+            "assets": [
+              "projects/wingv/src/favicon.ico",
+              "projects/wingv/src/assets"
+            ],
+            "styles": [
+              "projects/wingv/src/styles.scss"
+            ],
+            "scripts": []
+          },
+          "configurations": {
+            "production": {
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "500kb",
+                  "maximumError": "1mb"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "2kb",
+                  "maximumError": "4kb"
+                }
+              ],
+              "fileReplacements": [
+                {
+                  "replace": "projects/wingv/src/environments/environment.ts",
+                  "with": "projects/wingv/src/environments/environment.prod.ts"
+                }
+              ],
+              "outputHashing": "all"
+            },
+            "development": {
+              "buildOptimizer": false,
+              "optimization": false,
+              "vendorChunk": true,
+              "extractLicenses": false,
+              "sourceMap": true,
+              "namedChunks": true
+            }
+          },
+          "defaultConfiguration": "production"
+        },
+        "serve": {
+          "builder": "@angular-devkit/build-angular:dev-server",
+          "configurations": {
+            "production": {
+              "browserTarget": "wingv:build:production"
+            },
+            "development": {
+              "browserTarget": "wingv:build:development"
+            }
+          },
+          "defaultConfiguration": "development"
+        },
+        "extract-i18n": {
+          "builder": "@angular-devkit/build-angular:extract-i18n",
+          "options": {
+            "browserTarget": "wingv:build"
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/wingv/src/test.ts",
+            "polyfills": "projects/wingv/src/polyfills.ts",
+            "tsConfig": "projects/wingv/tsconfig.spec.json",
+            "karmaConfig": "projects/wingv/karma.conf.js",
+            "inlineStyleLanguage": "scss",
+            "assets": [
+              "projects/wingv/src/favicon.ico",
+              "projects/wingv/src/assets"
+            ],
+            "styles": [
+              "projects/wingv/src/styles.scss"
+            ],
+            "scripts": []
+          }
+        }
+      }
+    }
   }
 }
