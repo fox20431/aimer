@@ -1,0 +1,61 @@
+.container {
+	position: relative;
+	width: 150px;
+	height: 100px;
+	box-sizing: border-box;
+	font-size: 100px;
+	color: #FFFFFF;
+	text-align: center;
+	line-height: 200px;
+
+	.top {
+		position: relative;
+		border-bottom: 1px solid #fff;
+	}
+
+	.bottom {
+		line-height: 0;
+		border-top: 1px solid #fff;
+	}
+
+	.block {
+		width: 100%;
+		height: 100%;
+		background-color: black;
+		overflow: hidden;
+	}
+
+	.flod-box {
+		position: absolute;
+		top: 0;
+		/* 为了把flod-box 放到top表面上 */
+		width: 100%;
+		height: 100%;
+		border-bottom: 1px solid #fff;
+		/*给flod-box加以基点的肯定*/
+		transform-style: preserve-3d;
+		transform-origin: bottom;
+
+		/* 以底部为旋转的基准点 */
+		.flod-block {
+			position: absolute;
+			width: 100%;
+			height: 100%;
+			backface-visibility: hidden;
+			overflow: hidden;
+		}
+
+		.front {
+			background-color: black;
+			border-bottom: 1px solid #fff;
+		}
+
+		.back {
+			background-color: black;
+			border-top: 1px solid #fff;
+			transform: rotateX(0deg) rotateY(-180deg) scale(-1);
+			line-height: 0px;
+			/* 把数字上移了*/
+		}
+	}
+}
