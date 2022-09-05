@@ -1,27 +1,37 @@
-# MinAndMing
+# Min & Ming
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 14.2.1.
+About the love between Min and Ming.
 
-## Development server
+> I often think I am like a idiot :)
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+## Project
 
-## Code scaffolding
+### wingv
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+`wingv` pronounces it like `when we`.
+
+Do you remenber `when we` get together?
+
+### timer
+
+A interesting timer, ref: https://juejin.cn/post/7097898319233417252
 
 ## Build
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+### Prerequire
 
-## Running unit tests
+`Node JS` environment
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+### Run With Dev
 
-## Running end-to-end tests
+Build the library: 
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+```sh
+ng build timer --watch
+```
 
-## Further help
+Run the Project: 
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+```sh
+ng run wingv
+```
