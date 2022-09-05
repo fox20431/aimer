@@ -8,14 +8,15 @@ import { Component, OnInit, ElementRef, ViewChild, AfterViewInit } from '@angula
 export class IndexComponent implements OnInit, AfterViewInit {
 
 	title = "纪念日"
-
 	seconds: number = new Date().getSeconds()
 	minutes: number = new Date().getMinutes()
+	hours: number = new Date().getHours()
 
   constructor() { 
 		setInterval(() => {
 			this.seconds = new Date().getSeconds()
 			this.minutes = new Date().getMinutes()
+			this.hours = new Date().getHours()
 		}, 200)
 	}
 	

@@ -4,7 +4,10 @@ $tertiaryColor: #f0f5db;
 
 .container {
 	height: 100vmax;
+	background-image: url("https://cdn.jsdelivr.net/gh/fox20431/imgs/background.jpg");
 	background-color: $tertiaryColor;
+	background-repeat: repeat;
+	background-size: 256px;
 	padding: 1px;
 }
 
@@ -18,5 +21,14 @@ $tertiaryColor: #f0f5db;
 .title-content {
 	font-family: sans-serif, serif;
 	color: $primaryColor;
-	font-size: 2.5em;
+	font-size: 2.8em;
+	font-weight: 800;
+	text-shadow: 0 0 4px #000;
+}
+
+.time {
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+	align-items: center;
 }

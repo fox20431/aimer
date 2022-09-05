@@ -19,40 +19,40 @@ export class FlipBoardComponent implements OnInit, AfterViewInit {
 	@ViewChild('bottom')
 	bottomElement!: ElementRef<HTMLParagraphElement>;
 
-	currentValue = 1
+	currentValue: number = 0
+	nextValue: number = 1
 
 	@Input()
 	value!: number
 
-	constructor() {
-	}
+	constructor() {}
 
 	ngOnInit(): void {
+		this.currentValue = this.value
 	}
 
 	ngAfterViewInit(): void {
 		let tempValue = this.value
-		const transform180 = (seconds: any) => {
+		const transform180 = (value: number) => {
+			this.currentValue = this.value;
 			let timer: NodeJS.Timeout;
 			this.flodBoxElement.nativeElement.style.transition = "transform 0s"; //使其瞬间返回到 0deg
 			this.flodBoxElement.nativeElement.style.transform = "perspective(200px) rotateX(0deg)";
 			// frontNode 与 bottomNode 的显示
-			this.frontElement.nativeElement.innerHTML = seconds;
-			this.bottomElement.nativeElement.innerHTML = seconds;
 			timer = setTimeout(() => {
 				this.flodBoxElement.nativeElement.style.transition = "transform 0.9s"; //缓个100ms执行，0.9秒转完
 				this.flodBoxElement.nativeElement.style.transform = "perspective(200px) rotateX(-180deg)";
-				this.currentValue = this.value + 1;
+				this.nextValue = this.value + 1;
 				clearTimeout(timer);
 			}, 100)
 		}
 		setInterval(() => {
-			let seconds = new Date().getSeconds();
 			// if have the value not change, the animation don't start.
 			if (tempValue == this.value) { 
 				tempValue = this.value
 			} else {
-				transform180(seconds);
+				transform180(this.value);
+				tempValue = this.value
 			}
 		}, 1000);
 	}
