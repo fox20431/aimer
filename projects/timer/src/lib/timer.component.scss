@@ -1,61 +1,66 @@
+$backgroundColor: #000000;
+$fontColor: #ffffff;
+$gapColor: rgba(255, 255, 255, 1);
+
+$containerWidth: 90px;
+$containerHeight: 60px;
+
 .container {
 	position: relative;
-	width: 150px;
-	height: 100px;
+	width: $containerWidth;
+	height: $containerHeight;
+	line-height: 2*$containerHeight;
 	box-sizing: border-box;
-	font-size: 100px;
-	color: #FFFFFF;
+	font-size: $containerHeight*1.25;
+	color: $fontColor;
 	text-align: center;
-	line-height: 200px;
 
 	.top {
-		position: relative;
-		border-bottom: 1px solid #fff;
+		border-bottom: 1px solid $gapColor;
+		width: 100%;
+		height: 100%;
+		background-color: $backgroundColor;
+		overflow: hidden;
 	}
 
 	.bottom {
 		line-height: 0;
-		border-top: 1px solid #fff;
-	}
-
-	.block {
+		border-top: 1px solid $gapColor;
 		width: 100%;
 		height: 100%;
-		background-color: black;
+		background-color: $backgroundColor;
 		overflow: hidden;
 	}
 
 	.flod-box {
 		position: absolute;
 		top: 0;
-		/* 为了把flod-box 放到top表面上 */
 		width: 100%;
 		height: 100%;
-		border-bottom: 1px solid #fff;
-		/*给flod-box加以基点的肯定*/
+		border-bottom: 1px solid $gapColor;
 		transform-style: preserve-3d;
 		transform-origin: bottom;
 
-		/* 以底部为旋转的基准点 */
-		.flod-block {
+		.front {
 			position: absolute;
 			width: 100%;
 			height: 100%;
+			background-color: $backgroundColor;
+			border-bottom: 1px solid $gapColor;
 			backface-visibility: hidden;
 			overflow: hidden;
 		}
 
-		.front {
-			background-color: black;
-			border-bottom: 1px solid #fff;
-		}
-
 		.back {
-			background-color: black;
-			border-top: 1px solid #fff;
+			position: absolute;
+			width: 100%;
+			height: 100%;
+			background-color: $backgroundColor;
+			border-top: 1px solid $gapColor;
 			transform: rotateX(0deg) rotateY(-180deg) scale(-1);
 			line-height: 0px;
-			/* 把数字上移了*/
+			backface-visibility: hidden;
+			overflow: hidden;
 		}
 	}
 }

@@ -9,8 +9,14 @@ export class IndexComponent implements OnInit, AfterViewInit {
 
 	title = "纪念日"
 
+	seconds: number = new Date().getSeconds()
+
   constructor() { 
+		setInterval(() => {
+			this.seconds = new Date().getSeconds()
+		}, 200)
 	}
+	
 	ngAfterViewInit(): void {
 	}
 
