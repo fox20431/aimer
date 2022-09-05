@@ -1,9 +1,16 @@
 import { Component, OnInit, ElementRef, ViewChild, AfterViewInit } from '@angular/core';
 
+function calcDaysFromMeeting() {
+	let meetingTimestamp = new Date(2021, 9, 19).getTime();
+	let nowTimestamp = Date.now()
+	let interval = nowTimestamp - meetingTimestamp
+	return Math.floor(interval / 1000 / 60 / 60 / 24);
+}
+
 @Component({
-  selector: 'app-index',
-  templateUrl: './index.component.html',
-  styleUrls: ['./index.component.scss']
+	selector: 'app-index',
+	templateUrl: './index.component.html',
+	styleUrls: ['./index.component.scss']
 })
 export class IndexComponent implements OnInit, AfterViewInit {
 
@@ -11,19 +18,21 @@ export class IndexComponent implements OnInit, AfterViewInit {
 	seconds: number = new Date().getSeconds()
 	minutes: number = new Date().getMinutes()
 	hours: number = new Date().getHours()
+	days: number = calcDaysFromMeeting()
 
-  constructor() { 
+	constructor() {
 		setInterval(() => {
 			this.seconds = new Date().getSeconds()
 			this.minutes = new Date().getMinutes()
 			this.hours = new Date().getHours()
+			this.days = calcDaysFromMeeting()
 		}, 200)
 	}
-	
+
 	ngAfterViewInit(): void {
 	}
 
-  ngOnInit(): void {
-  }
+	ngOnInit(): void {
+	}
 
 }
