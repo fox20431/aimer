@@ -42,4 +42,5 @@ jobs:
       - name: Transfer
         run: |
           echo '${{ secrets.SSH_PRIVATE_KEY }}' > ./id_rsa
-          scp -i ./id_rsa -r ./dist root@warrior.hihusky.com:~/
+          chmod 0600 ./id_rsa
+          scp -o StrictHostKeyChecking=no -i ./id_rsa -r ./dist root@warrior.hihusky.com:~/
