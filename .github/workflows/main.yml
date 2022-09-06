@@ -19,8 +19,8 @@ jobs:
           node-version: ${{ matrix.node-version }}
           cache: "npm"
 
-  install_dependency: 
-    name: Install Dependency
+  build:
+    name: Build
     runs-on: ubuntu-latest
     needs: prepare_env
     steps:
@@ -39,8 +39,24 @@ jobs:
           npm run flip-board:build
       - run: |
           npm run wingv:build
+
+  transfer: 
+    name: Transfer
+    runs-on: ubuntu-latest
+    needs: build
+    steps:
       - name: Transfer
         run: |
           echo '${{ secrets.SSH_PRIVATE_KEY }}' > ./id_rsa
           chmod 0600 ./id_rsa
-          scp -o StrictHostKeyChecking=no -i ./id_rsa -r ./dist root@warrior.hihusky.com:~/
+          ssh -o StrictHostKeyChecking=no -i ./id_rsa root@warrior.hihusky.com "rm -rf /var/www/wingv/*"
+          scp -o StrictHostKeyChecking=no -i ./id_rsa -r ./dist/wingv/* root@warrior.hihusky.com:/var/www/wingv/
+
+  deploy: 
+    name: Deploy
+    runs-on: ubuntu-latest
+    needs: transfer
+    steps:
+      - run: |
+
+
