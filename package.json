@@ -2,11 +2,11 @@
   "name": "min-and-ming",
   "version": "0.0.0",
   "scripts": {
-    "ng": "ng",
-    "start": "ng serve",
-    "build": "ng build",
-    "watch": "ng build --watch --configuration development",
-    "test": "ng test"
+    "wingv:start": "ng serve wingv",
+    "wingv:build": "ng build wingv",
+    "wingv:watch": "ng build wingv --watch --configuration development",
+    "flip-board:start": "ng serve flip-board",
+    "flip-board:build": "ng build flip-board"
   },
   "private": true,
   "dependencies": {

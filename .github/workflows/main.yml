@@ -1,0 +1,46 @@
+name: Angular CI
+on:
+  push:
+    branches:
+      - "master"
+
+jobs:
+  prepare_env:
+    strategy:
+      matrix:
+        node-version: [16.x]
+    name: Prepare Environment
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v3
+        with:
+          node-version: ${{ matrix.node-version }}
+          cache: "npm"
+
+  install_dependency: 
+    name: Install Dependency
+    runs-on: ubuntu-latest
+    needs: prepare_env
+    steps:
+      - uses: actions/checkout@v3
+      - name: Cache Node Modules
+        uses: actions/cache@v3
+        with:
+          path: |
+            node_modules
+          key: npm-${{ hashFiles('package-lock.json') }}
+          restore-keys: npm-
+      - name: Install npm package
+        run: |
+          npm i
+      - run: |
+          npm run flip-board:build
+      - run: |
+          npm run wingv:build
+          
+# - name: Transfer
+#   run: |
+#     echo ${{ secrets.SSH_PRIVATE_KEY }} > ./id_rsa
+#     scp -i ./id_rsa -r ./dist root@warrior.hihusky.com:~/
