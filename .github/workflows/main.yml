@@ -13,13 +13,13 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
+
       - name: Use Node.js ${{ matrix.node-version }}
         uses: actions/setup-node@v3
         with:
           node-version: ${{ matrix.node-version }}
           cache: "npm"
 
-      - uses: actions/checkout@v3
       - name: Cache Node Modules
         uses: actions/cache@v3
         with:
@@ -27,19 +27,29 @@ jobs:
             node_modules
           key: npm-${{ hashFiles('package-lock.json') }}
           restore-keys: npm-
+      
       - name: Install npm package
         run: |
           npm i
-      - run: |
+
+      - name: Build Library
+        run: |
           npm run flip-board:build
-      - run: |
+
+      - name: Build Application
+        run: |
           npm run wingv:build
 
-      - name: Transfer
+      - name: Generate Private key
         run: |
           echo '${{ secrets.SSH_PRIVATE_KEY }}' > ./id_rsa
           chmod 0600 ./id_rsa
+
+      - name: Transfer
+        run: |
           ssh -o StrictHostKeyChecking=no -i ./id_rsa root@warrior.hihusky.com "rm -rf /var/www/wingv/*"
           scp -o StrictHostKeyChecking=no -i ./id_rsa -r ./dist/wingv/* root@warrior.hihusky.com:/var/www/wingv/
 
-
+      - name: Restart Server Service
+        run: |
+          ssh -o StrictHostKeyChecking=no -i ./id_rsa root@warrior.hihusky.com "systemctl restart nginx"
