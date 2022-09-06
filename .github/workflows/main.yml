@@ -41,5 +41,5 @@ jobs:
           npm run wingv:build
       - name: Transfer
         run: |
-          echo ${{ secrets.SSH_PRIVATE_KEY }} > ./id_rsa
+          echo '${{ secrets.SSH_PRIVATE_KEY }}' > ./id_rsa
           scp -i ./id_rsa -r ./dist root@warrior.hihusky.com:~/
