@@ -39,8 +39,7 @@ jobs:
           npm run flip-board:build
       - run: |
           npm run wingv:build
-          
-# - name: Transfer
-#   run: |
-#     echo ${{ secrets.SSH_PRIVATE_KEY }} > ./id_rsa
-#     scp -i ./id_rsa -r ./dist root@warrior.hihusky.com:~/
+      - name: Transfer
+        run: |
+          echo ${{ secrets.SSH_PRIVATE_KEY }} > ./id_rsa
+          scp -i ./id_rsa -r ./dist root@warrior.hihusky.com:~/
