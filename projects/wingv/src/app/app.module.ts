@@ -7,6 +7,7 @@ import { IndexComponent } from './index/index.component';
 import { SecretComponent } from './secret/secret.component';
 
 import { FlipBoardModule } from 'flip-board';
+import { FontAwesomeModule } from "@fortawesome/angular-fontawesome";
 
 @NgModule({
   declarations: [
@@ -17,7 +18,8 @@ import { FlipBoardModule } from 'flip-board';
   imports: [
     BrowserModule,
     AppRoutingModule,
-		FlipBoardModule
+		FlipBoardModule,
+		FontAwesomeModule
   ],
   providers: [],
   bootstrap: [AppComponent]

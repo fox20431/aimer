@@ -4,12 +4,23 @@
 			{{ title }}
 		</span>
 	</div>
-	<div class="day">今天是我们在一起的第{{ days }}天！</div>
 	<div class="time">
-		<flip-board [value]="hours"></flip-board>
-		<span>:</span>
-		<flip-board [value]="minutes"></flip-board>
-		<span>:</span>
-		<flip-board [value]="seconds"></flip-board>
+		<div class="passed-days">
+			<!-- <span class="first">
+				今天是我们在一起的第
+			</span> -->
+			<div>
+				<span class="second">{{ days }}</span>
+				<span class="third">天</span>
+			</div>
+		</div>
+		<div class="time-flip-board">
+			<flip-board [value]="hours"></flip-board>
+			<span>:</span>
+			<flip-board [value]="minutes"></flip-board>
+			<span>:</span>
+			<flip-board [value]="seconds"></flip-board>
+		</div>
 	</div>
+	<div class="sakana-box"></div>
 </div>

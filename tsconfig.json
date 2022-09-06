@@ -25,6 +25,9 @@
     "paths": {
       "flip-board": [
         "dist/flip-board"
+      ],
+      "sakana": [
+        "dist/sakana"
       ]
     }
   },
