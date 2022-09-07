@@ -1,5 +1,14 @@
+$primaryColor: #F77DA9;
+$secondaryColor: #9DE9DF;
+$tertiaryColor: #f0f5db;
+
 body {
 	margin: 0;
+	// background-image: url("https://cdn.jsdelivr.net/gh/fox20431/imgs/background.jpg");
+	background-image: url("https://s2.loli.net/2022/09/07/u2QBbgkOaG51PUT.jpg");
+	background-repeat: repeat;
+	background-size: 300px;
+	background-color: $tertiaryColor;
 }
 
 p {

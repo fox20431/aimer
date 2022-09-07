@@ -1,7 +1,7 @@
 import { Component, OnInit, ElementRef, ViewChild, AfterViewInit } from '@angular/core';
 
 function calcDaysFromMeeting() {
-	let meetingTimestamp = new Date(2021, 9, 19).getTime();
+	let meetingTimestamp = new Date("9/19/21").getTime();
 	let nowTimestamp = Date.now()
 	let interval = nowTimestamp - meetingTimestamp
 	return Math.floor(interval / 1000 / 60 / 60 / 24);
