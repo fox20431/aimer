@@ -6,7 +6,8 @@
     "wingv:build": "ng build wingv --base-href ./",
     "wingv:watch": "ng build wingv --watch --configuration development",
     "flip-board:start": "ng serve flip-board",
-    "flip-board:build": "ng build flip-board"
+    "flip-board:build": "ng build flip-board",
+    "flip-board:build-watch": "ng build flip-board --watch"
   },
   "private": true,
   "dependencies": {
