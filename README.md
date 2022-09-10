@@ -12,7 +12,7 @@ About the love between Min and Ming.
 
 Do you remenber `when we` get together?
 
-### timer
+### flip-board
 
 A interesting timer, ref: https://juejin.cn/post/7097898319233417252
 
