@@ -1,6 +1,4 @@
-# Min & Ming
-
-About the love between Min and Ming.
+# Aimer
 
 > I often think I am like a idiot :)
 
