@@ -9,7 +9,7 @@ import { SecretComponent } from './secret/secret.component';
 import { FontAwesomeModule } from "@fortawesome/angular-fontawesome";
 
 import { FlipBoardModule } from 'flip-board';
-import { SakanaModule } from 'sakana';
+// import { SakanaModule } from 'sakana';
 
 @NgModule({
   declarations: [
@@ -22,7 +22,7 @@ import { SakanaModule } from 'sakana';
     AppRoutingModule,
 		FontAwesomeModule,
 		FlipBoardModule,
-		SakanaModule,
+		// SakanaModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
