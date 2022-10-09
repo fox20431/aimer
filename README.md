@@ -25,7 +25,7 @@ A interesting timer, ref: https://juejin.cn/post/7097898319233417252
 Build the library: 
 
 ```sh
-ng build timer --watch
+ng build flip-board --watch
 ```
 
 Run the Project: 

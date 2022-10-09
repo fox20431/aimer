@@ -16,7 +16,7 @@ export class IndexComponent implements OnInit, AfterViewInit {
 
 	@ViewChild('bgm')
 	bgm!: ElementRef<HTMLAudioElement>
-
+	
 	title = "纪念日"
 	seconds: number = new Date().getSeconds()
 	minutes: number = new Date().getMinutes()
