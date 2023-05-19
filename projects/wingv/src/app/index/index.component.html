@@ -1,26 +1,29 @@
-<div class="container">
-	<audio #bgm controls autoplay loop hidden>
-		<source src="https://poke-ball.oss-cn-hangzhou.aliyuncs.com/%E6%A9%99%E5%AD%90Miu%20-%20%E6%84%9B%E3%81%AB%E3%81%A7%E3%81%8D%E3%82%8B%E3%81%93%E3%81%A8%E3%81%AF%E3%81%BE%E3%81%A0%E3%81%82%E3%82%8B%E3%81%8B%E3%81%84.mp3">
-	</audio>
-	<div class="title">
-		<span class="title-content">
-			{{ title }}
-		</span>
-	</div>
-	<div class="time">
-		<div class="passed-days">
-			<div>
-				<span class="second">{{ days }}</span>
-				<span class="third">天</span>
+<div class="main-container">
+	<div class="main-content">
+		<audio #bgm controls autoplay loop hidden>
+			<source src="https://poke-ball.oss-cn-hangzhou.aliyuncs.com/%E6%A9%99%E5%AD%90Miu%20-%20%E6%84%9B%E3%81%AB%E3%81%A7%E3%81%8D%E3%82%8B%E3%81%93%E3%81%A8%E3%81%AF%E3%81%BE%E3%81%A0%E3%81%82%E3%82%8B%E3%81%8B%E3%81%84.mp3">
+		</audio>
+		<div class="title">
+			<span class="title-content">
+				{{ title }}
+			</span>
+		</div>
+		<div class="time">
+			<div class="passed-days">
+				<div>
+					<!-- <span class="first">第</span> -->
+					<span class="second">{{ days }} DAYS</span>
+					<!-- <span class="third">天</span> -->
+				</div>
+			</div>
+			<div class="time-flip-board">
+				<flip-board [value]="hours"></flip-board>
+				<span>:</span>
+				<flip-board [value]="minutes"></flip-board>
+				<span>:</span>
+				<flip-board [value]="seconds"></flip-board>
 			</div>
 		</div>
-		<div class="time-flip-board">
-			<flip-board [value]="hours"></flip-board>
-			<span>:</span>
-			<flip-board [value]="minutes"></flip-board>
-			<span>:</span>
-			<flip-board [value]="seconds"></flip-board>
-		</div>
+		<!-- <sakana-widget></sakana-widget> -->
 	</div>
-	<!-- <sakana-widget></sakana-widget> -->
 </div>

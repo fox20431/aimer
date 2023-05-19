@@ -1,6 +1,7 @@
 $backgroundColor: #F77DA9;
-$fontColor: #ffffff;
+$fontColor: #f0f5db;
 $gapSize: 2px;
+$cardRadius: 10px;
 
 $entityWidth: 90px;
 $entityHeight: 60px;
@@ -26,6 +27,7 @@ $entityHeight: 60px;
 		height: 100%;
 		background-color: $backgroundColor;
 		overflow: hidden;
+		border-radius: $cardRadius;
 	}
 
 	.bottom {
@@ -35,6 +37,7 @@ $entityHeight: 60px;
 		height: 100%;
 		background-color: $backgroundColor;
 		overflow: hidden;
+		border-radius: 10px;
 	}
 
 	.flod-box {
@@ -52,6 +55,7 @@ $entityHeight: 60px;
 			background-color: $backgroundColor;
 			backface-visibility: hidden;
 			overflow: hidden;
+			border-radius: $cardRadius;
 		}
 
 		.back {
@@ -64,6 +68,7 @@ $entityHeight: 60px;
 			line-height: 0px;
 			backface-visibility: hidden;
 			overflow: hidden;
+			border-radius: $cardRadius;
 		}
 	}
 }

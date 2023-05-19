@@ -4,7 +4,6 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { IndexComponent } from './index/index.component';
-import { SecretComponent } from './secret/secret.component';
 
 import { FontAwesomeModule } from "@fortawesome/angular-fontawesome";
 
@@ -14,8 +13,7 @@ import { FlipBoardModule } from 'flip-board';
 @NgModule({
   declarations: [
     AppComponent,
-    IndexComponent,
-    SecretComponent
+    IndexComponent
   ],
   imports: [
     BrowserModule,
