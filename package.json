@@ -8,7 +8,7 @@
     "flip-board:start": "ng serve flip-board",
     "flip-board:build": "ng build flip-board",
     "flip-board:build-watch": "ng build flip-board --watch",
-		"sakana:start": "ng serve sakana",
+    "sakana:start": "ng serve sakana",
     "sakana:build": "ng build sakana",
     "sakana:build-watch": "ng build sakana --watch"
   },
@@ -35,12 +35,12 @@
     "@angular/compiler-cli": "^16.0.2",
     "@types/jasmine": "~4.3.1",
     "@types/node": "^20.2.1",
-    "jasmine-core": "~5.0.0",
+    "jasmine-core": "~4.0.0",
     "karma": "~6.4.2",
     "karma-chrome-launcher": "~3.2.0",
     "karma-coverage": "~2.2.0",
     "karma-jasmine": "~5.1.0",
-    "karma-jasmine-html-reporter": "~2.0.0",
+    "karma-jasmine-html-reporter": "^2.0.0",
     "ng-packagr": "^16.0.1",
     "typescript": "~5.0.4"
   }
