@@ -10,17 +10,12 @@ env:
   APP_NAME: wingv
 
 jobs:
-  prepare_env:
+  build:
     name: CI/CD
     runs-on: ubuntu-latest
 
     steps:
       - uses: actions/checkout@v3
-      - name: Use Node.js 16.x
-        uses: actions/setup-node@v3
-        with:
-          node-version: 16.x
-          cache: "npm"
       - name: Set the version for ENV
         run: |
           echo "VERSION=$(node -p "require('./package.json').version")" >> $GITHUB_ENV

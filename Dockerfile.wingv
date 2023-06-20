@@ -1,18 +1,11 @@
-FROM node:16 AS base
+FROM node:18-alpine AS base
 
 
 
-FROM base as deps
+FROM base as builder
 WORKDIR /app
-COPY package*.json ./
-RUN npm install
-
-
-
-FROM base AS builder
-WORKDIR /app
-COPY --from=deps /app/node_modules ./node_modules
 COPY . .
+RUN npm install
 RUN npm run flip-board:build
 RUN npm run wingv:build
 
