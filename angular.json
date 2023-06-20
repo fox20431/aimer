@@ -48,6 +48,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
+            "baseHref": "/wingv/",
             "outputPath": "dist/wingv",
             "index": "projects/wingv/src/index.html",
             "main": "projects/wingv/src/main.ts",
