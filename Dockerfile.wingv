@@ -20,4 +20,4 @@ RUN npm install -g http-server
 EXPOSE 1314
 
 # run Angular application
-CMD ["http-server", "-p 1314", "./wingv"]
+CMD ["http-server", "-p 1314", "./"]
