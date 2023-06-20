@@ -11,26 +11,16 @@ env:
 
 jobs:
   prepare_env:
-    strategy:
-      matrix:
-        node-version: [16.x]
-    name: Prepare Environment
+    name: CI/CD
     runs-on: ubuntu-latest
 
     steps:
       - uses: actions/checkout@v3
-      - name: Use Node.js ${{ matrix.node-version }}
+      - name: Use Node.js 16.x
         uses: actions/setup-node@v3
         with:
-          node-version: ${{ matrix.node-version }}
+          node-version: 16.x
           cache: "npm"
-      - name: Cache Docker layers
-        uses: actions/cache@v3
-        with:
-          path: /var/lib/docker
-          key: ${{ runner.os }}-docker-${{ hashFiles('**/Dockerfile') }}
-          restore-keys: |
-            ${{ runner.os }}-docker-
       - name: Set the version for ENV
         run: |
           echo "VERSION=$(node -p "require('./package.json').version")" >> $GITHUB_ENV
@@ -42,7 +32,7 @@ jobs:
           password: ${{ secrets.DOCKER_REGISTRY_TOKEN }}
       - name: Docker setup
         run: |
-          docker build -t $APP_NAME .
+          docker build -t $APP_NAME -f Dockerfile.wingv . 
           docker tag $APP_NAME ${{ secrets.DOCKER_REGISTRY_HOST }}/$APP_NAME:${{ env.VERSION }}
           docker push ${{ secrets.DOCKER_REGISTRY_HOST }}/$APP_NAME:${{ env.VERSION }}
       - name: Configure SSH
