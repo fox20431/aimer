@@ -1,0 +1,24 @@
+FROM node:16 AS base
+
+FROM base as deps
+WORKDIR /app
+COPY package*.json ./
+RUN npm install
+
+FROM base AS builder
+WORKDIR /app
+COPY --from=deps /app/node_modules ./node_modules
+COPY . .
+RUN npm run wingv:build
+
+
+FROM base AS runner
+WORKDIR /app
+COPY --from=builder /app/dist/ ./
+# install http-server to run Angular application
+RUN npm install -g http-server
+# expose 1314 port
+EXPOSE 1314
+
+# run Angular application
+CMD ["http-server", "-p 1314", "dist/wingv"]

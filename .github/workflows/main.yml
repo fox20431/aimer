@@ -1,8 +1,13 @@
-name: Angular CI
+name: Angular CI/CD
+
 on:
   push:
-    branches:
-      - "master"
+    branches: [ "master" ]
+  pull_request:
+    branches: [ "master" ]
+
+env:
+  APP_NAME: wingv
 
 jobs:
   prepare_env:
@@ -11,45 +16,45 @@ jobs:
         node-version: [16.x]
     name: Prepare Environment
     runs-on: ubuntu-latest
+
     steps:
       - uses: actions/checkout@v3
-
       - name: Use Node.js ${{ matrix.node-version }}
         uses: actions/setup-node@v3
         with:
           node-version: ${{ matrix.node-version }}
           cache: "npm"
-
-      - name: Cache Node Modules
+      - name: Cache Docker layers
         uses: actions/cache@v3
         with:
-          path: |
-            node_modules
-          key: npm-${{ hashFiles('package-lock.json') }}
-          restore-keys: npm-
-      
-      - name: Install npm package
+          path: /var/lib/docker
+          key: ${{ runner.os }}-docker-${{ hashFiles('**/Dockerfile') }}
+          restore-keys: |
+            ${{ runner.os }}-docker-
+      - name: Set the version for ENV
         run: |
-          npm i
-
-      - name: Build Library
+          echo "VERSION=$(node -p "require('./package.json').version")" >> $GITHUB_ENV
+      - name: Login to Docker Registry
+        uses: docker/login-action@v2
+        with:
+          registry: ${{ secrets.DOCKER_REGISTRY_HOST }}
+          username: ${{ secrets.DOCKER_REGISTRY_USERNAME }}
+          password: ${{ secrets.DOCKER_REGISTRY_TOKEN }}
+      - name: Docker setup
         run: |
-          npm run flip-board:build
-
-      - name: Build Application
+          docker build -t $APP_NAME .
+          docker tag $APP_NAME ${{ secrets.DOCKER_REGISTRY_HOST }}/$APP_NAME:${{ env.VERSION }}
+          docker push ${{ secrets.DOCKER_REGISTRY_HOST }}/$APP_NAME:${{ env.VERSION }}
+      - name: Configure SSH
         run: |
-          npm run wingv:build
-
-      - name: Generate Private key
+          mkdir -p ~/.ssh/
+          echo "${{ secrets.SSH_PRIVATE_KEY }}" > ~/.ssh/id_rsa
+          chmod 600 ~/.ssh/id_rsa
+          ssh-keyscan -t rsa ${{ secrets.REMOTE_HOST }} >> ~/.ssh/known_hosts
+      - name: Docker deploy
         run: |
-          echo '${{ secrets.SSH_PRIVATE_KEY }}' > ./id_rsa
-          chmod 0600 ./id_rsa
-
-      - name: Transfer
-        run: |
-          ssh -o StrictHostKeyChecking=no -i ./id_rsa root@warrior.hihusky.com "rm -rf /var/www/wingv/*"
-          scp -o StrictHostKeyChecking=no -i ./id_rsa -r ./dist/wingv/* root@warrior.hihusky.com:/var/www/wingv/
-
-      - name: Restart Server Service
-        run: |
-          ssh -o StrictHostKeyChecking=no -i ./id_rsa root@warrior.hihusky.com "systemctl restart nginx"
+          ssh ${{ secrets.REMOTE_USER }}@${{ secrets.REMOTE_HOST }} "\
+            docker rm -f $APP_NAME; \
+            docker pull ${{ secrets.DOCKER_REGISTRY_HOST }}/$APP_NAME:${{ env.VERSION }}; \
+            docker run -itd -p 1314:1314 --name=$APP_NAME ${{ secrets.DOCKER_REGISTRY_HOST }}/$APP_NAME:${{ env.VERSION }}; \
+            "

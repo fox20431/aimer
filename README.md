@@ -25,11 +25,11 @@ A interesting timer, ref: https://juejin.cn/post/7097898319233417252
 Build the library: 
 
 ```sh
-ng build flip-board --watch
+npm run flip-board:build-in-watch
 ```
 
 Run the Project: 
 
 ```sh
-ng run wingv
+npm run wingc:start
 ```
