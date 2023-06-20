@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "scripts": {
     "wingv:start": "ng serve wingv",
-    "wingv:build": "ng build wingv --base-href ./",
+    "wingv:build": "ng build wingv --base-href ./wingv",
     "wingv:watch": "ng build wingv --watch --configuration development",
     "flip-board:start": "ng serve flip-board",
     "flip-board:build": "ng build flip-board",
