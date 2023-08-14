@@ -11,7 +11,6 @@ COPY --from=deps /app/node_modules ./node_modules
 COPY . .
 RUN npm run wingv:build
 
-
 FROM base AS runner
 WORKDIR /app
 COPY --from=builder /app/dist/ ./
