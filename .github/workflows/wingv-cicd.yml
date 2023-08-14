@@ -36,7 +36,7 @@ jobs:
           password: ${{ secrets.DOCKER_REGISTRY_TOKEN }}
       - name: Docker setup
         run: |
-          docker build -t $APP_NAME .
+          docker build -t $APP_NAME -f Dockerfile.wingv . 
           docker tag $APP_NAME ${{ secrets.DOCKER_REGISTRY_HOST }}/$APP_NAME:${{ env.VERSION }}
           docker push ${{ secrets.DOCKER_REGISTRY_HOST }}/$APP_NAME:${{ env.VERSION }}
       - name: Configure SSH

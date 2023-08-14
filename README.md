@@ -31,5 +31,5 @@ npm run flip-board:build-in-watch
 Run the Project: 
 
 ```sh
-npm run wingc:start
+npm run wingv:start
 ```

@@ -8,7 +8,6 @@ import { IndexComponent } from './index/index.component';
 import { FontAwesomeModule } from "@fortawesome/angular-fontawesome";
 
 import { FlipBoardModule } from 'flip-board';
-// import { SakanaModule } from 'sakana';
 
 @NgModule({
   declarations: [
@@ -20,7 +19,6 @@ import { FlipBoardModule } from 'flip-board';
     AppRoutingModule,
 		FontAwesomeModule,
 		FlipBoardModule,
-		// SakanaModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
