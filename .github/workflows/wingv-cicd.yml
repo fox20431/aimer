@@ -11,11 +11,20 @@ env:
 
 jobs:
   build:
-    name: CI/CD
+    strategy:
+      matrix:
+        node-version: [16.x]
+    name: Prepare Environment
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v3
+      - name: Cache Docker layers
+        uses: actions/cache@v3
+        with:
+          path: /var/lib/docker
+          key: ${{ runner.os }}-docker-${{ hashFiles('**/Dockerfile') }}
+          restore-keys: |
+            ${{ runner.os }}-docker-
       - name: Set the version for ENV
         run: |
           echo "VERSION=$(node -p "require('./package.json').version")" >> $GITHUB_ENV

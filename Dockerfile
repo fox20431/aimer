@@ -6,7 +6,6 @@ RUN npm run flip-board:build
 RUN npm run wingv:build
 
 
-
 FROM nginx:alpine
 WORKDIR /app
 # 复制构建好的应用到 Nginx 的默认站点目录
