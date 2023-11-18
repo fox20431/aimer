@@ -6,10 +6,7 @@
     "wingv:build": "ng build wingv",
     "flip-board:start": "ng serve flip-board",
     "flip-board:build": "ng build flip-board",
-    "flip-board:build-in-watch": "ng build flip-board --watch",
-    "sakana:start": "ng serve sakana",
-    "sakana:build": "ng build sakana",
-    "sakana:build-watch": "ng build sakana --watch"
+    "flip-board:build-in-watch": "ng build flip-board --watch"
   },
   "private": true,
   "dependencies": {
